@@ -1,11 +1,23 @@
 def ask_text(message: str)->str:
+    """
+    This function ask the user for a string and return the user answer without spaces.
+    :param message: type -> str, This message will be displayed before the user enter his answer.
+    :return: type -> str, the returned value is the answer of the user but without spaces.
+    """
     value = ""
     while value.strip() == "":
-        value = input(message)
+        value = input(message + " : ")
     return value
 
 def ask_number(message: str, min_val=None, max_val=None) -> int:
-    value = ask_text(message)
+    """
+    This function asks the user to enter a number and make sure the number is valid based on the type and the value.
+    :param message: type -> str, this message will be displayed to help the user in his choice of number.
+    :param min_val: type -> int, optional parameter that indicates if you want the value to greater or equal than your minimum.
+    :param max_val: type -> int, optional parameter that indicates if you want the value to be lesser or equal than your maximum.
+    :return: type-> int, the returned value is the number chosen by the user.
+    """
+    value = ask_text(message+" : ")
     int_value = 0
     digits = "1234567890"
     negative = False
@@ -41,6 +53,12 @@ def ask_number(message: str, min_val=None, max_val=None) -> int:
     return int_value
 
 def ask_choice(message :str, options :list)->int:
+    """
+    This function print the message given in parameter and display the options and treat the user answer to return his choice.
+    :param message: type -> str, this parameter will be displayed before the different options.
+    :param options: type -> list, this parameter regroup the different options you give to the user, the order count.
+    :return: type-> int, the returned value corresponds to an index of options -1.
+    """
     print(message)
     for i in range (len(options)):
         print("{}. {}".format(i+1,options[i]))
