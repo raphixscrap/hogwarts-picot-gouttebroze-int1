@@ -48,6 +48,8 @@ def ask_choice(message :str, options :list)->int:
         user_choice = int(input("Your choice:\t"))
         if (user_choice<1 and user_choice>len(options)):
             raise ValueError
-    except :
+    except ValueError:
+        return ask_choice(message,options)
+    except TypeError:
         return ask_choice(message,options)
     return user_choice
