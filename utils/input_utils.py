@@ -4,7 +4,6 @@ def ask_text(message: str)->str:
         value = input(message)
     return value
 
-
 def ask_number(message: str, min_val=None, max_val=None) -> int:
     value = ask_text(message)
     int_value = 0
@@ -40,3 +39,15 @@ def ask_number(message: str, min_val=None, max_val=None) -> int:
         print("Please enter a number between {} and {}.".format(min_val,max_val))
         return ask_number(message, min_val, max_val)
     return int_value
+
+def ask_choice(message :str, options :list)->int:
+    print(message)
+    for i in range (len(options)):
+        print("{}. {}".format(i+1,options[i]))
+    try:
+        user_choice = int(input("Your choice:\t"))
+        if (user_choice<1 and user_choice>len(options)):
+            raise ValueError
+    except :
+        return ask_choice(message,options)
+    return user_choice
