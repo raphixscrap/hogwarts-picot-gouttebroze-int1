@@ -44,6 +44,7 @@ def ask_choice(message :str, options :list)->int:
     print(message)
     for i in range (len(options)):
         print("{}. {}".format(i+1,options[i]))
+
     try:
         user_choice = int(input("Your choice:\t"))
         if (user_choice<1 and user_choice>len(options)):
