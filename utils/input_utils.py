@@ -28,8 +28,10 @@ def ask_number(message: str, min_val=None, max_val=None) -> int:
             raise ValueError
         elif (not min_val <= int_value <= max_val):
             raise ValueError
-    except:
+    except ValueError:
         return ask_number(message,min_val,max_val)
+    except TypeError:
+        return ask_number(message, min_val, max_val)
     return int_value
 
 def ask_choice(message :str, options :list)->int:
