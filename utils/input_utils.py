@@ -8,7 +8,7 @@ def ask_text(message: str)->str:
     """
     value = ""
     while value.strip() == "":
-        value = input(message + " : ")
+        value = input(message + ":\t")
     return value
 
 def ask_number(message: str, min_val=None, max_val=None) -> int:
@@ -19,7 +19,7 @@ def ask_number(message: str, min_val=None, max_val=None) -> int:
     :param max_val: type -> int, optional parameter that indicates if you want the value to be lesser or equal than your maximum.
     :return: type-> int, the returned value is the number chosen by the user.
     """
-    value = ask_text(message+" : ")
+    value = ask_text(message)
     try:
         int_value=int(value)
         if (min_val is None and max_val is None):
@@ -48,7 +48,7 @@ def ask_choice(message :str, options :list)->int:
         print("{}. {}".format(i+1,options[i]))
 
     try:
-        user_choice = int(input("Your choice:\t"))
+        user_choice = ask_number("Your choice", 1, len(options))
         if (user_choice<1 and user_choice>len(options)):
             raise ValueError
     except ValueError:

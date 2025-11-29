@@ -1,3 +1,6 @@
+from utils.input_utils import ask_choice
+
+
 def update_house_points(houses:dict, house_name:str, points:int)->None:
     if not house_name in houses:
         print(f"[WARN] - HOUSE_UPDATE_POINTS - The House '{house_name}' don't exist")
@@ -28,5 +31,39 @@ def display_winning_house(houses:dict)->None:
         print(f"The houses with the highest score are : {', '.join(winners)} with {max_value} points.")
 
 def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]])->None:
-    pass
+    houses_points = {
+        "Gryffindor": 0,
+        "Slytherin": 0,
+        "Hufflepuff": 0,
+        "Ravenclaw": 0
+    }
+
+
+    for question in questions:
+        value = ask_choice(question[0], question[1])
+        houses_points[question[2][value - 1]] += 3
+
+    for attribute, value in character["Attributes"].items():
+        if attribute == "Courage":
+            houses_points["Gryffindor"] += value*2
+        elif attribute == "Ambition":
+            houses_points["Slytherin"] += value*2
+        elif attribute == "Loyalty":
+            houses_points["Hufflepuff"] += value*2
+        elif attribute == "Intelligence":
+            houses_points["Ravenclaw"] += value*2
+
+    house_selected = None
+    max_value = None
+    for house, value in houses_points.items():
+        if max_value is None:
+            max_value = value
+            house_selected = house
+            continue
+        if max_value < value:
+            max_value = value
+            house_selected = house
+
+    print(houses_points)
+    return house_selected
 
