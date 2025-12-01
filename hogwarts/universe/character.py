@@ -23,7 +23,7 @@ def modify_money(character : dict, money :int)->dict:
     return character
 
 def add_item(character:dict, key:str, item:str)->dict:
-    if(key != "Inventory" and key != "Spells"):
+    if key != "Inventory" and key != "Spells":
         print(f"[WARN] - CHARACTER_ADD_ITEM - Key is invalid for adding an item for {get_full_name(character)}")
     else:
         character[key].append(item)

@@ -1,4 +1,4 @@
-from utils.input_utils import ask_choice
+from hogwarts.utils.input_utils import ask_choice
 
 
 def update_house_points(houses:dict, house_name:str, points:int)->None:
@@ -24,7 +24,7 @@ def display_winning_house(houses:dict)->None:
                 winners.append(name)
 
     if len(winners) == 0:
-        print("[WARN] - HOUSE_DISPLAY_WINNING_HOUSE - House list empty")
+        print("[WARN] - HOUSE_DISPLAY_WINNING_HOUSE - House list is empty")
     elif len(winners) == 1:
         print(f"The house with the highest score is {winners[0]} with {max_value} points.")
     else:
@@ -42,6 +42,7 @@ def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]
     for question in questions:
         value = ask_choice(question[0], question[1])
         houses_points[question[2][value - 1]] += 3
+        print()
 
     for attribute, value in character["Attributes"].items():
         if attribute == "Courage":
@@ -55,7 +56,9 @@ def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]
 
     house_selected = None
     max_value = None
+    print("Summary of scores :")
     for house, value in houses_points.items():
+        print(f"{house}: {value} points")
         if max_value is None:
             max_value = value
             house_selected = house
@@ -64,6 +67,5 @@ def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]
             max_value = value
             house_selected = house
 
-    print(houses_points)
     return house_selected
 
