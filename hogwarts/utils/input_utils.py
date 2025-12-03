@@ -67,3 +67,6 @@ def load_file(file_path : str):
     extracted_file = load(file)
     file.close()
     return extracted_file
+
+def print_bar():
+    print("\n-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-")

@@ -28,7 +28,7 @@ def display_winning_house(houses:dict)->None:
     elif len(winners) == 1:
         print(f"The house with the highest score is {winners[0]} with {max_value} points.")
     else:
-        print(f"The houses with the highest score are : {', '.join(winners)} with {max_value} points.")
+        print(f"It's a tie ! The houses with the highest score are : {', '.join(winners)} with {max_value} points.")
 
 def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]])->None:
     houses_points = {
