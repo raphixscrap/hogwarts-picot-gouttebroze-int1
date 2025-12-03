@@ -29,3 +29,5 @@ def add_item(character:dict, key:str, item:str)->dict:
         character[key].append(item)
     return character
 
+def show_character_money(character:dict)->None:
+    print('You have {} Galleons'.format(character["Money"]))
