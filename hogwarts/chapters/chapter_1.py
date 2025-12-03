@@ -47,10 +47,6 @@ def meet_hagrid(character : dict)->None:
     if (ask_choice("Do you want to follow this unknown and menacing man named 'Hagrid'?",["Yes, for sure! What could go wrong ?","No, my mom always told me to avoid discussion with stangers."]) == 1):
         print("Hagrid take you out of the house, and the yells of uncle Vernon will not influence your decision.")
     else:
-        print("")
+        print("Hagrid grab your shoulders and say with a concern glance : 'You have no choice {}!'. Then, he takes you along, and it's not with your strengh or uncle Vernon courage that will save you. ")
+    input("Enter any cases to continue : \t")
     return
-
-def buy_supplies(character:dict)->dict:
-    print("\033[1mWelcome to Diagon Alley!\033[0m")
-    inventory = load_file("data/inventory.json")
-    print(inventory)
