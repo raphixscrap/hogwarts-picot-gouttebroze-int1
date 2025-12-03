@@ -50,3 +50,4 @@ def meet_hagrid(character : dict)->None:
         print("Hagrid grab your shoulders and say with a concern glance : 'You have no choice {}!'. Then, he takes you along, and it's not with your strengh or uncle Vernon courage that will save you. ")
     input("Enter any cases to continue : \t")
     return
+
