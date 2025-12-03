@@ -1,6 +1,8 @@
 import hogwarts.universe.house as house
 import hogwarts.universe.character as character
 import hogwarts.chapters.chapter_1 as chapter1
+from hogwarts.chapters.chapter_1 import start_chapter_1
+
 #TODO: REMOVE THIS FROM PRODUCTION
 questions = [
     (
@@ -27,4 +29,4 @@ questions = [
 harry = character.init_character("Potter", "Harry", {"Courage": 3, "Ambition":2, "Loyalty": 1, "Intelligence": 0})
 #print(house.assign_house(harry, questions))
 #ron = chapter1.create_character()
-chapter1.buy_supplies(harry)
+start_chapter_1()
