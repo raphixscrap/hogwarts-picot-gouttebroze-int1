@@ -51,3 +51,10 @@ def meet_hagrid(character : dict)->None:
     input("Enter any cases to continue : \t")
     return
 
+
+def buy_supplies(character:dict)->dict:
+    inventory = load_file("hogwarts/data/inventory.json")
+
+    print("\033[1mWelcome to Diagon Alley!\033[0m")
+
+    print(inventory)
