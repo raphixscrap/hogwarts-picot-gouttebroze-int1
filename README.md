@@ -6,13 +6,13 @@
 **Hogwarts: An Interactive Python Adventure**
 
 ### Brief Description
-This project is an interactive text-based adventure game developed in Python, inspired by the *Harry Potter* universe. [cite_start]It allows a player to create a wizard character, explore the magical world, be sorted into a Hogwarts House, learn spells, and participate in a Quidditch match[cite: 6, 13, 17].
+This project is an interactive text-based adventure game developed in Python, inspired by the *Harry Potter* universe. It allows a player to create a wizard character, explore the magical world, be sorted into a Hogwarts House, learn spells, and participate in a Quidditch match.
 
-[cite_start]The game manages data using Python structures (dictionaries, lists) and external JSON files for persistence (inventory, spells, houses, quizzes)[cite: 18, 23].
+The game manages data using Python structures (dictionaries, lists) and external JSON files for persistence (inventory, spells, houses, quizzes).
 
 ### Contributors
-* **Raphaël PICOT** (@raphixscrap)
-* **Lazare Gouttebroze** (@guimauve39631)
+* **Raphaël PICOT** [@raphixscrap](https://github.com/raphixscrap)
+* **Lazare Gouttebroze** [@guimauve39631](https://github.com/Guimauve39631)
 * **Group:** INT1
 
 **Repository Link:** [https://github.com/raphixscrap/hogwarts-picot-gouttebroze-int1](https://github.com/raphixscrap/hogwarts-picot-gouttebroze-int1)
