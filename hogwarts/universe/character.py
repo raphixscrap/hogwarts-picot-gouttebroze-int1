@@ -5,7 +5,7 @@ def display_character (character : dict)->None:
     print("Character profile: ")
     for key,item in character.items():
         if(type(item) == list):
-            print("{}: {}".format(key," ; ".join(item)))
+            print("{}: {}".format(key,"\n - ".join(item)))
         elif(type(item)==dict):
             print("{} :".format(key))
             for item_key, item_item in item.items():

@@ -118,9 +118,11 @@ def buy_supplies(character:dict)->dict:
 
     print("All required items have been successfully purchased! Here is your final inventory:\n")
     display_character(character)
+    input("(...)")
     return character
 
 def start_chapter_1()->dict:
+    print("=========== CHAPTER 1 : Arrival in the magical world ===========")
     introduction()
     character = create_character()
     recieve_letter()

@@ -63,7 +63,7 @@ def load_file(file_path : str):
     :param file_path: type -> str, this string represents the path to access the json file.
     :return: type -> dict/list, the returned value is a dict or a list depending on the json file, it contains the data from the json file.
     """
-    file = open(file_path,'r')
+    file = open(file_path,'r',encoding="utf-8")
     extracted_file = load(file)
     file.close()
     return extracted_file
