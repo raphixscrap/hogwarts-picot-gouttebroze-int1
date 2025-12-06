@@ -6,6 +6,7 @@ def update_house_points(houses:dict, house_name:str, points:int)->None:
         print(f"[WARN] - HOUSE_UPDATE_POINTS - The House '{house_name}' don't exist")
     else:
         houses[house_name] += points
+        print(f"+{points} for {house_name}! Total: {houses[house_name]} points")
     return
 
 def display_winning_house(houses:dict)->None:
