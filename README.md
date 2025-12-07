@@ -55,3 +55,4 @@ To start the game, execute the `main.py` file from the root of the source folder
 
 ```bash
 python main.py
+```
