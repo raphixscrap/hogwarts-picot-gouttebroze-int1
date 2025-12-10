@@ -62,7 +62,7 @@ def quidditch_match(character: dict, houses:dict)->None:
     del teams[character["House"]]
     o_name = random.choice(list(teams.keys()))
     o_team = create_team(o_name, teams[o_name])
-    winner = None
+    winner = ""
     print("Quidditch Match:", c_team["name"], "vs", o_team["name"],"!")
 
     display_team(c_team["name"], c_team["players"])
@@ -79,7 +79,7 @@ def quidditch_match(character: dict, houses:dict)->None:
         if golden_snitch_appears():
             winner = catch_golden_snitch(c_team, o_team)
             print("The Golden Snitch has been caught by", winner["name"], "(+150 points)")
-            break;
+            break
         input("Press Enter to continue")
     print("End of the match!\n")
     display_score(c_team, o_team)
