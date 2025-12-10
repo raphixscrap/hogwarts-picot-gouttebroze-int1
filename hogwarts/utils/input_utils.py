@@ -11,6 +11,9 @@ def ask_text(message: str)->str:
         value = input(message + ":\t")
     return value
 
+def wait_pause()->None:
+    input("(...)")
+
 def ask_number(message: str, min_val=None, max_val=None) -> int:
     """
     This function asks the user to enter a number and make sure the number is valid based on the type and the value.

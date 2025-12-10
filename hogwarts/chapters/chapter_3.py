@@ -1,9 +1,9 @@
 from hogwarts.universe.character import display_character, add_item
 from hogwarts.universe.house import update_house_points, display_winning_house
-from hogwarts.utils.input_utils import print_bar, load_file, ask_text
+from hogwarts.utils.input_utils import print_bar, load_file, ask_text, wait_pause
 import random
 
-def learn_spells(character:dict, file_path:str="hogwarts/data/spells.json")->None:
+def learn_spells(character:dict, file_path:str="data/spells.json")->None:
     print("You begin your magic lessons at Hogwarts...")
     spells = load_file(file_path)
     remaining = {
@@ -27,13 +27,13 @@ def learn_spells(character:dict, file_path:str="hogwarts/data/spells.json")->Non
     for spell in character["Spells"]:
         print("-",spell)
 
-def magic_quiz(character:dict, file_path="hogwarts/data/magic_quiz.json")->int:
+def magic_quiz(character:dict, file_path="data/magic_quiz.json")->int:
     quiz = load_file(file_path)
     points = 0
     print_bar()
     print("\nWelcome to the Hogwarts magic quiz!")
     print("Answer the 4 questions correctly to earn points for your house")
-    input("(...)")
+    wait_pause()
     print()
     for i in range(4):
         question = random.choice(quiz)
@@ -46,7 +46,7 @@ def magic_quiz(character:dict, file_path="hogwarts/data/magic_quiz.json")->int:
         else:
             print("Wrong answer. The correct answer was:", question["answer"])
     print("Score obtained:", points)
-    input("(...)")
+    wait_pause()
     return points
 
 def start_chapter_3(character, houses):
@@ -55,8 +55,8 @@ def start_chapter_3(character, houses):
     score = magic_quiz(character)
     update_house_points(houses, character["House"], score)
     display_winning_house(houses)
-    input("(...)")
+    wait_pause()
     display_character(character)
-    input("(...)")
+    wait_pause()
     print_bar()
     print("End of Chapter 3! You are now very good at magic, aren't you ?")

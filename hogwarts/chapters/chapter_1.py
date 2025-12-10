@@ -1,5 +1,5 @@
 from hogwarts.universe.character import init_character, display_character, show_character_money, modify_money, add_item
-from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file
+from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file, wait_pause
 
 
 def introduction()->None:
@@ -8,9 +8,9 @@ def introduction()->None:
     :return: None
     """
     print("As a kid, you always had been chasing for adventures and discoveries. You are living in a peaceful house a hundred miles away from London.")
-    input("(...)")
+    wait_pause()
     print("You are 12 years old and preparing to enter in middle school. But you don't know the great journey you are about to live...")
-    input("(...)")
+    wait_pause()
     return
 
 
@@ -40,53 +40,53 @@ def recieve_letter()->None:
         print("\nThe magical world will never know you existed... Game over.")
         exit()
     else:
-        #TODO: Rewrite the contents of this
-        print("Perfect ! You start to pack your stuff despite the disapprovement of your Uncle and Aunt !")
+        print("Perfect ! You start to gather your clothes and some books despite the disapproval of your uncle and aunt !")
 
 def meet_hagrid(character : dict)->None:
+    print("You walk road a lonely road, the only one that you ever known, you don't where it goes, but it's home to you, and you walk alone.")
     print("Hagrid : 'Hello {}! I'm here to help you shopping on Diagon Alley.".format(character["First Name"]))
-    if (ask_choice("Do you want to follow this unknown and menacing man named 'Hagrid'?",["Yes, for sure! What could go wrong ?","No, my mom always told me to avoid discussion with stangers."]) == 1):
-        print("Hagrid take you out of the house, and the yells of uncle Vernon will not influence your decision.")
+    if (ask_choice("Do you want to follow this unknown and menacing man named 'Hagrid'?",["Yes, for sure! What could go wrong ?","No, my aunt always told me to avoid discussion with stangers."]) == 1):
+        print("Hagrid is walking faster than you, but you are able to follow him.")
     else:
-        print("Hagrid grab your shoulders and say with a concern glance : 'You have no choice {}!'. Then, he takes you along, and it's not with your strengh or uncle Vernon courage that will save you. ".format(character["First Name"]))
-    input("(...)")
+        print("Hagrid grab your shoulders and say with a concern glance : 'You have no choice {}!'. Then, he takes you along, and it's not your strength that will save you. ".format(character["First Name"]))
+    wait_pause()
     return
 
 
 
 def buy_supplies(character:dict)->dict:
-    inventory = load_file("hogwarts/data/inventory.json")
+    inventory = load_file("data/inventory.json")
     required = ["1","2","4"]
-    remainingItems = []
+    remaining_items = []
     print("\033[1mWelcome to Diagon Alley!\033[0m")
     print("\nCatalog of available items:")
     for number, item in inventory.items():
         req="\n"
         if number in required:
             req="(required)\n"
-            remainingItems.append(item[0])
+            remaining_items.append(item[0])
         print(number + ".", item[0],"-",item[1],"Galleons ", end=req)
-    successItem = False
-    stillBuying = True
-    while stillBuying:
+    success_item = False
+    still_buying = True
+    while still_buying:
         print()
         show_character_money(character)
-        print('Remaining required items:',", ".join(remainingItems))
-        selectedItemNumber = ask_number("Enter the number of the item to buy", 1,len(inventory))
-        selectedItem = inventory[str(selectedItemNumber)]
-        if selectedItem[1] > character["Money"]:
-            print("You don't have enough money to buy :",selectedItem[0])
-            stillBuying = False
+        print('Remaining required items:',", ".join(remaining_items))
+        selected_item_number = ask_number("Enter the number of the item to buy", 1,len(inventory))
+        selected_item = inventory[str(selected_item_number)]
+        if selected_item[1] > character["Money"]:
+            print("You don't have enough money to buy :",selected_item[0])
+            still_buying = False
         else:
-            print("You bought:", selectedItem[0],f'(-{selectedItem[1]} Galleons)')
-            modify_money(character, -selectedItem[1])
-            add_item(character, "Inventory", selectedItem[0])
-            if selectedItem[0] in remainingItems:
-                remainingItems.remove(selectedItem[0])
-        if len(remainingItems) == 0:
-            successItem = True
-            stillBuying = False
-    if not successItem:
+            print("You bought:", selected_item[0],f'(-{selected_item[1]} Galleons)')
+            modify_money(character, -selected_item[1])
+            add_item(character, "Inventory", selected_item[0])
+            if selected_item[0] in remaining_items:
+                remaining_items.remove(selected_item[0])
+        if len(remaining_items) == 0:
+            success_item = True
+            still_buying = False
+    if not success_item:
         print("You don't have the required equipment for your magic courses ! Game over...")
         exit()
     print("All required items have been purchased!")
@@ -105,20 +105,20 @@ def buy_supplies(character:dict)->dict:
         print(f'{number}. {item[0]} - {item[1]} Galleons')
         animals_choices.append(item[0])
 
-    selectedAnimalNumber = ask_choice("Which pet do you want?", animals_choices)
-    selectedAnimal = animals[str(selectedAnimalNumber)]
-    if selectedAnimal[1] > character["Money"]:
-        print("You don't have enough money to buy :", selectedAnimal[0])
+    selected_animal_number = ask_choice("Which pet do you want?", animals_choices)
+    selected_animal = animals[str(selected_animal_number)]
+    if selected_animal[1] > character["Money"]:
+        print("You don't have enough money to buy :", selected_animal[0])
         print("You don't have your Hogwarts pet ! You will feel so lonely ... Game over")
         exit()
     else:
-        add_item(character, "Inventory", selectedAnimal[0])
-        modify_money(character, -selectedAnimal[1])
-        print(f"You chose: {selectedAnimal[0]} (-{selectedAnimal[1]} Galleons)")
+        add_item(character, "Inventory", selected_animal[0])
+        modify_money(character, -selected_animal[1])
+        print(f"You chose: {selected_animal[0]} (-{selected_animal[1]} Galleons)")
 
     print("All required items have been successfully purchased! Here is your final inventory:\n")
     display_character(character)
-    input("(...)")
+    wait_pause()
     return character
 
 def start_chapter_1()->dict:

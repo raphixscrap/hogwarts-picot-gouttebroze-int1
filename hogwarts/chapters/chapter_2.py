@@ -1,5 +1,5 @@
 from hogwarts.universe.character import display_character
-from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file
+from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file, wait_pause
 from hogwarts.universe.house import assign_house
 
 def meet_friends(character: dict)->None:
@@ -12,7 +12,7 @@ def meet_friends(character: dict)->None:
     else:
         print('Run stare at you for a moment : -Okay... enjoy your loneliness\n He closes the door and you see him walk away.')
         character["Attributes"]["Ambition"]+=1
-    input('(...)')
+    wait_pause()
     print("\n\n\n")
     print_bar()
     print('A girl enters next, already carrying a stack of books.')
@@ -24,7 +24,7 @@ def meet_friends(character: dict)->None:
         print("Hermoine walk away...")
         character["Attributes"]["Courage"]+=1
 
-    input('(...)')
+    wait_pause()
     print('\n\n\n')
     print_bar()
     print(" The door slams open, and a blonde boy enter, with an dedain glance, he asks :")
@@ -47,18 +47,18 @@ def meet_friends(character: dict)->None:
 def welcome_message()->None:
     print_bar()
     print("\nWelcome to Hogwarts, a sanctuary where your minds will be sharpened and your hearts shall find a home.")
-    input("(...)")
+    wait_pause()
     print("May you fill these ancient halls with friendship, for help will always be given here to those who ask for it.")
-    input("(...)")
+    wait_pause()
     print("Remember that happiness can be found, even in the darkest of times, if one only remembers to turn on the light.")
-    input("(...)")
+    wait_pause()
     print("Now, before we become too befuddled by our own brilliance, let the feast begin!")
 
 def sorting_ceremony(character:dict)->dict:
     print_bar()
     print("\nThe sorting ceremony begins in the Great Hall...")
     print("\nThe Sorting Hat observes you for a long time before asking its questions:")
-    input("(...)")
+    wait_pause()
     print("\n")
     questions = [
         (
@@ -94,16 +94,16 @@ def enter_common_room(character:dict)->None:
     if not character["House"]:
         print("[WARN] - The House is not set for the character")
         return
-    houses_data = load_file("hogwarts/data/houses.json")
+    houses_data = load_file("data/houses.json")
     house= houses_data[character["House"]]
     print_bar()
     print("\nYou follow the perfects though the castle corridors...")
-    input("(...)")
+    wait_pause()
     print(house["emoji"], house["description"])
-    input("(...)")
+    wait_pause()
     print(house["installation_message"])
     print("\nYour house colors:", ", ".join(house["colors"]))
-    input("(...)")
+    wait_pause()
 
 def start_chapter_2(character:dict)->None:
     print("=========== CHAPTER 2 : The journey to Hogwarts ===========")
@@ -112,6 +112,6 @@ def start_chapter_2(character:dict)->None:
     sorting_ceremony(character)
     enter_common_room(character)
     display_character(character)
-    input("(...)")
+    wait_pause()
     print_bar()
     print("End of Chapter 2! The classes at Hogwarts will now start ! Are you ready to learn magic ?")

@@ -2,7 +2,7 @@ import random
 
 from hogwarts.universe.character import display_character
 from hogwarts.universe.house import display_winning_house, update_house_points
-from hogwarts.utils.input_utils import print_bar, load_file
+from hogwarts.utils.input_utils import print_bar, load_file, wait_pause
 
 
 def create_team(house:str, team_data:dict,is_player:bool=False, player:dict=None)->dict:
@@ -57,7 +57,7 @@ def display_team(house:str, team:list):
         print(" -", team[i])
 
 def quidditch_match(character: dict, houses:dict)->None:
-    teams = load_file("hogwarts/data/teams_quidditch.json")
+    teams = load_file("data/teams_quidditch.json")
     c_team = create_team(character["House"], teams[character["House"]], True, character)
     del teams[character["House"]]
     o_name = random.choice(list(teams.keys()))
@@ -69,7 +69,7 @@ def quidditch_match(character: dict, houses:dict)->None:
     print("\n")
     display_team(o_team['name'], o_team["players"])
     print("\nYou are playing for", c_team["name"], "as the Seeker\n")
-    input("(...)")
+    wait_pause()
     for i in range(20):
         print("━━━","Turn",i + 1,"━━━")
         attempt_goal(c_team, o_team, True)
@@ -83,7 +83,7 @@ def quidditch_match(character: dict, houses:dict)->None:
         input("Press Enter to continue")
     print("End of the match!\n")
     display_score(c_team, o_team)
-    input("(...)")
+    wait_pause()
     print("Final result:")
     if winner:
         print(f"The Golden Snitch was caught by {winner["name"]}!")
@@ -103,7 +103,7 @@ def quidditch_match(character: dict, houses:dict)->None:
         print(f'Victory for {winner["name"]}!')
         update_house_points(houses, winner["name"], 500)
 
-    input("(...)")
+    wait_pause()
 
 
 
@@ -112,9 +112,9 @@ def start_chapter_4_quidditch(character, houses)->None:
     quidditch_match(character, houses)
     print_bar()
     print("End of Chapter 4! What an incredible performance on the field!")
-    input("(...)")
+    wait_pause()
     display_winning_house(houses)
-    input("(...)")
+    wait_pause()
     display_character(character)
-    input("(...)")
+    wait_pause()
     print_bar()
