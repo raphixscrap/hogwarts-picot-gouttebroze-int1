@@ -31,7 +31,7 @@ def display_winning_house(houses:dict)->None:
     else:
         print(f"It's a tie ! The houses with the highest score are : {', '.join(winners)} with {max_value} points.")
 
-def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]])->None:
+def assign_house(character:dict, questions:list[tuple[str, list[str], list[str]]])->str:
     houses_points = {
         "Gryffindor": 0,
         "Slytherin": 0,
