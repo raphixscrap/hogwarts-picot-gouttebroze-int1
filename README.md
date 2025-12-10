@@ -57,7 +57,7 @@ To start the game, execute the `main.py` file from the root of the source folder
 python main.py
 ```
 
-# 4. Logbook
+## 4. Logbook
 
 ### Task Distribution
 We adopted a pair-programming approach for the core utilities, then divided the chapters to work in parallel before merging.
@@ -79,7 +79,7 @@ We adopted a pair-programming approach for the core utilities, then divided the 
 
 ---
 
-# 5. Control, Testing, and Validation
+## 5. Control, Testing, and Validation
 
 ### Input and Error Management
 To ensure the game does not crash due to invalid user input, we centralized all interactions in `hogwarts/utils/input_utils.py`.
