@@ -1,5 +1,5 @@
 from hogwarts.universe.character import display_character
-from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file, wait_pause
+from hogwarts.utils.input_utils import ask_choice, print_bar, load_file, wait_pause
 from hogwarts.universe.house import assign_house
 
 def meet_friends(character: dict)->None:
@@ -17,11 +17,11 @@ def meet_friends(character: dict)->None:
     print_bar()
     print('A girl enters next, already carrying a stack of books.')
     print('-Hello, I am Hermione Granger. Have you ever read "A History of Magic?')
-    if (ask_choice("How do you respond?",["Yes, the autor trully knows his subject. It is a great introductive book!","Uh...no,I prefer adventures over books."])==1):
-        print("Hermoine smiles, impressed : -Oh, finally someone you read the books we will study!")
+    if (ask_choice("How do you respond?",["Yes, the autor truly knows his subject. It is a great introductive book!","Uh...no,I prefer adventures over books."])==1):
+        print("Hermione smiles, impressed : -Oh, finally someone you read the books we will study!")
         character['Attributes']["Intelligence"] +=1
     else:
-        print("Hermoine walk away...")
+        print("Hermione walk away...")
         character["Attributes"]["Courage"]+=1
 
     wait_pause()
