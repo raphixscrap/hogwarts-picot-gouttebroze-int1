@@ -38,7 +38,7 @@ def magic_quiz(character:dict, file_path="data/magic_quiz.json")->int:
     for i in range(4):
         question = random.choice(quiz)
         quiz.remove(question)
-        print(f"{i}. {question["question"]}")
+        print(f"{i+1}. {question["question"]}")
         answer = ask_text(">")
         if answer == question["answer"]:
             print(f"Correct answer {character["First Name"]} ! +25 points for your house.")
