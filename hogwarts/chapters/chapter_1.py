@@ -31,7 +31,7 @@ def create_character()->dict:
     display_character(character)
     return character
 
-def recieve_letter()->None:
+def receive_letter()->None:
     print("An owl flies through the window, delivering a letter sealed with the Hogwarts crest...")
     print("Dear Student,\n\nWe are pleased to inform you that you have been accepted to Hogwarts School of Witchcraft and Wizardry!”\n")
     if ask_choice("Do you accept this invitation and go to Hogwarts?",["Yes of course !", "No, I'd rather stay with Uncle Vernon..."]) == 2:
@@ -45,7 +45,7 @@ def recieve_letter()->None:
 def meet_hagrid(character : dict)->None:
     print("You walk road a lonely road, the only one that you ever known, you don't where it goes, but it's home to you, and you walk alone.")
     print("Hagrid : 'Hello {}! I'm here to help you shopping on Diagon Alley.".format(character["First Name"]))
-    if (ask_choice("Do you want to follow this unknown and menacing man named 'Hagrid'?",["Yes, for sure! What could go wrong ?","No, my aunt always told me to avoid discussion with stangers."]) == 1):
+    if (ask_choice("Do you want to follow this unknown and menacing man named 'Hagrid'?",["Yes, for sure! What could go wrong ?","No, my aunt always told me to avoid discussion with strangers."]) == 1):
         print("Hagrid is walking faster than you, but you are able to follow him.")
     else:
         print("Hagrid grab your shoulders and say with a concern glance : 'You have no choice {}!'. Then, he takes you along, and it's not your strength that will save you. ".format(character["First Name"]))
@@ -125,7 +125,7 @@ def start_chapter_1()->dict:
     print("=========== CHAPTER 1 : Arrival in the magical world ===========")
     introduction()
     character = create_character()
-    recieve_letter()
+    receive_letter()
     meet_hagrid(character)
     character=buy_supplies(character)
     print_bar()

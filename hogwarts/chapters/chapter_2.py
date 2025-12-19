@@ -3,7 +3,7 @@ from hogwarts.utils.input_utils import ask_choice, print_bar, load_file, wait_pa
 from hogwarts.universe.house import assign_house
 
 def meet_friends(character: dict)->None:
-    print("Red-heared boy : 'Hi! I'm Ron Weasley, mind if I sit with you?")
+    print("Red-haired boy : 'Hi! I'm Ron Weasley, mind if I sit with you?")
     ron = False
     if(ask_choice("How do you respond?",["Sure, have a seat !","Sorry, i prefer to travel alone"])==1):
         print("Ron smiles : -Awesome! You'll see, Hogwarts is amazing!")
@@ -28,7 +28,7 @@ def meet_friends(character: dict)->None:
     wait_pause()
     print('\n'*5)
     print_bar()
-    print(" The door slams open, and a blonde boy enter, with an dedain glance, he asks :")
+    print(" The door slams open, and a blonde boy enter, with a disdain glance, he asks :")
     print("-I'm Draco Malfoy. It's best to choose your friends carefully from the start, don't you think?")
     if ron:
         print("He looks at Ron and makes a face.")
