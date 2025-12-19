@@ -20,7 +20,7 @@ def launch_menu_choice()->None:
     while True:
         choice = ask_number("Your choice")
         if choice == 2:
-            print("Goodbye Wizzard ! Don't forget : magic is the key !")
+            print("Goodbye Wizard ! Don't forget : magic is the key !")
             exit()
         elif choice == 1:
             print("Tip : When you see (...), it means you have to press enter to continue !")
