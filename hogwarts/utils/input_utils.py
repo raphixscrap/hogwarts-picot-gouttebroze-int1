@@ -58,14 +58,7 @@ def ask_choice(message :str, options :list)->int:
     for i in range (len(options)):
         print("{}. {}".format(i+1,options[i]))
 
-    try:
-        user_choice = ask_number("Your choice", 1, len(options))
-        if (user_choice<1 and user_choice>len(options)):
-            raise ValueError
-    except ValueError:
-        return ask_choice(message,options)
-    except TypeError:
-        return ask_choice(message,options)
+    user_choice = ask_number("Your choice", 1, len(options))
     return user_choice
 
 def load_file(file_path : str):
