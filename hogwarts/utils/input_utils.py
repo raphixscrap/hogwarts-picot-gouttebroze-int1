@@ -1,5 +1,14 @@
 from json import load
 
+def verif_number(string: str)->bool:
+    string_copy = string
+    if (string_copy[0] == "-"):
+        string_copy = string_copy[1:]
+    for letter in string_copy:
+        if(not letter in "1234567890"):
+            return False
+    return True
+
 def ask_text(message: str)->str:
     """
     This function ask the user for a string and return the user answer without spaces.
@@ -23,20 +32,19 @@ def ask_number(message: str, min_val=None, max_val=None) -> int:
     :return: type-> int, the returned value is the number chosen by the user.
     """
     value = ask_text(message)
-    try:
+    if (verif_number(value)):
         int_value=int(value)
-        if (min_val is None and max_val is None):
-            return int_value
-        elif (min_val is None and max_val < int_value):
-            raise ValueError
-        elif (max_val is None and min_val > int_value):
-            raise ValueError
-        elif (not min_val <= int_value <= max_val):
-            raise ValueError
-    except ValueError:
+    else :
         return ask_number(message,min_val,max_val)
-    except TypeError:
-        return ask_number(message, min_val, max_val)
+    if (min_val is None and max_val is None):
+        return int_value
+    elif (min_val is None and max_val < int_value):
+        return ask_number(message,min_val,max_val)
+    elif (max_val is None and min_val > int_value):
+        return ask_number(message,min_val,max_val)
+    elif (not min_val <= int_value <= max_val):
+        return ask_number(message,min_val,max_val)
+
     return int_value
 
 def ask_choice(message :str, options :list)->int:
