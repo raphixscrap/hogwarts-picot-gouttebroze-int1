@@ -13,19 +13,20 @@ def meet_friends(character: dict)->None:
         print('Run stare at you for a moment : -Okay... enjoy your loneliness\n He closes the door and you see him walk away.')
         character["Attributes"]["Ambition"]+=1
     wait_pause()
-    print("\n\n\n")
+    print("\n"*5)
     print_bar()
     print('A girl enters next, already carrying a stack of books.')
     print('-Hello, I am Hermione Granger. Have you ever read "A History of Magic?')
     if (ask_choice("How do you respond?",["Yes, the autor truly knows his subject. It is a great introductive book!","Uh...no,I prefer adventures over books."])==1):
         print("Hermione smiles, impressed : -Oh, finally someone you read the books we will study!")
+        print("Hermione walks inside your carriage and sit next to you.")
         character['Attributes']["Intelligence"] +=1
     else:
         print("Hermione walk away...")
         character["Attributes"]["Courage"]+=1
 
     wait_pause()
-    print('\n\n\n')
+    print('\n'*5)
     print_bar()
     print(" The door slams open, and a blonde boy enter, with an dedain glance, he asks :")
     print("-I'm Draco Malfoy. It's best to choose your friends carefully from the start, don't you think?")
