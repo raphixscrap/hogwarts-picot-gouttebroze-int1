@@ -1,5 +1,5 @@
 from hogwarts.universe.character import init_character, display_character, show_character_money, modify_money, add_item
-from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file, wait_pause
+from hogwarts.utils.input_utils import ask_text, ask_number, ask_choice, print_bar, load_file, wait_pause, clean_board
 
 
 def introduction()->None:
@@ -28,7 +28,10 @@ def create_character()->dict:
         "Loyalty":loyalty,
         "Ambition":ambition
     })
+    clean_board()
     display_character(character)
+    wait_pause()
+    clean_board()
     return character
 
 def receive_letter()->None:
@@ -37,14 +40,22 @@ def receive_letter()->None:
     if ask_choice("Do you accept this invitation and go to Hogwarts?",["Yes of course !", "No, I'd rather stay with Uncle Vernon..."]) == 2:
         print("\nYou tear up the letter, and Uncle Vernon cheers:")
         print("\n“EXCELLENT! Finally, someone NORMAL in this house!”")
+        wait_pause()
         print("\nThe magical world will never know you existed... Game over.")
         exit()
     else:
         print("Perfect ! You start to gather your clothes and some books despite the disapproval of your uncle and aunt !")
 
 def meet_hagrid(character : dict)->None:
-    print("You walk road a lonely road, the only one that you ever known, you don't where it goes, but it's home to you, and you walk alone.")
-    print("Hagrid : 'Hello {}! I'm here to help you shopping on Diagon Alley.".format(character["First Name"]))
+    print("You walk a lonely road, the only one that you ever known, you don't know where it goes, but it's home to you, and you walk alone.")
+    wait_pause()
+    print("After more than one hour of walking in streets. You enter in a pub. \nA tall man, that looks like a giant. Come to your table and tell you :")
+    print("\"Do you want to see something cool {} ? Follow me!\"".format(character["First Name"]))
+    wait_pause()
+    print("He brings you to the back room of the pub and, with some manipulations, open the wall.")
+    print("The giant says : \"Oh and i forgot to introduce myself! I am Hagrid! Nice to meet you {}.\"".format(character["First Name"]))
+    wait_pause()
+    print("Hagrid : 'I'm here to help you shopping on Diagon Alley.")
     if (ask_choice("Do you want to follow this unknown and menacing man named 'Hagrid'?",["Yes, for sure! What could go wrong ?","No, my aunt always told me to avoid discussion with strangers."]) == 1):
         print("Hagrid is walking faster than you, but you are able to follow him.")
     else:
@@ -55,6 +66,7 @@ def meet_hagrid(character : dict)->None:
 
 
 def buy_supplies(character:dict)->dict:
+    clean_board()
     inventory = load_file("data/inventory.json")
     required = ["1","2","4"]
     remaining_items = []
@@ -90,6 +102,8 @@ def buy_supplies(character:dict)->dict:
         print("You don't have the required equipment for your magic courses ! Game over...")
         exit()
     print("All required items have been purchased!")
+    wait_pause()
+    clean_board()
     print("\nIt's time to choose your Hogwarts pet!\n")
     show_character_money(character)
     print()
@@ -130,4 +144,5 @@ def start_chapter_1()->dict:
     character=buy_supplies(character)
     print_bar()
     print("End of Chapter 1! Your adventure begins at Hogwarts...")
+    wait_pause()
     return character

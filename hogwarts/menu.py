@@ -2,7 +2,7 @@ from hogwarts.chapters.chapter_1 import start_chapter_1
 from hogwarts.chapters.chapter_2 import start_chapter_2
 from hogwarts.chapters.chapter_3 import start_chapter_3
 from hogwarts.chapters.chapter_4 import start_chapter_4_quidditch
-from hogwarts.utils.input_utils import ask_number, print_bar
+from hogwarts.utils.input_utils import ask_number, print_bar, clean_board
 
 
 def display_main_menu()->None:
@@ -25,9 +25,13 @@ def launch_menu_choice()->None:
         elif choice == 1:
             print("Tip : When you see (...), it means you have to press enter to continue !")
             input("(...)")
+            clean_board()
             character = start_chapter_1()
+            clean_board()
             start_chapter_2(character)
+            clean_board()
             start_chapter_3(character, houses)
+            clean_board()
             start_chapter_4_quidditch(character, houses)
             print_bar()
             print('This this end of your magic journey !')
