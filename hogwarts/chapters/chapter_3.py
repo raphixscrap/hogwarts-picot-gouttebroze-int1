@@ -49,11 +49,17 @@ def magic_quiz(character:dict, file_path="data/magic_quiz.json")->int:
     wait_pause()
     return points
 
+def change_house_points(houses:dict)->None:
+    for elem in houses:
+        update_house_points(houses, elem, random.randint(0,500))
+    return
+
 def start_chapter_3(character, houses):
     print("=========== CHAPTER 3 : Classes and Discovering Hogwarts ===========")
     learn_spells(character)
     score = magic_quiz(character)
     update_house_points(houses, character["House"], score)
+    change_house_points(houses)
     display_winning_house(houses)
     wait_pause()
     display_character(character)

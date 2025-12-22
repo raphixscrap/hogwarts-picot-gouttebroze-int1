@@ -43,15 +43,15 @@ houses = {
     }
 
 if (__name__ == "__main__"):
-    character.display_character(harry)
+    #character.display_character(harry)
     #print(house.assign_house(harry, questions))
     #ron = chapter1.create_character()
     #enter_common_room(harry)
     #start_chapter_1()
     #start_chapter_2(harry)
     #start_chapter_3(harry,houses)
-    #teams_data = load_file("data/teams_quidditch.json")
-    #attack = create_team('Slytherin', teams_data["Slytherin"])
-    #defense = create_team('Gryffindor', teams_data["Gryffindor"], True, harry)
+    teams_data = load_file("data/teams_quidditch.json")
+    attack = create_team('Slytherin', teams_data["Slytherin"])
+    defense = create_team('Gryffindor', teams_data["Gryffindor"], True, harry)
 
-    #quidditch_match(harry, houses)
+    quidditch_match(harry, houses)
