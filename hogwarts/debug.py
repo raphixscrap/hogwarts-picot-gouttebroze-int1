@@ -43,7 +43,7 @@ houses = {
     }
 
 if (__name__ == "__main__"):
-    #character.display_character(harry)
+    character.display_character(harry)
     #print(house.assign_house(harry, questions))
     #ron = chapter1.create_character()
     #enter_common_room(harry)
