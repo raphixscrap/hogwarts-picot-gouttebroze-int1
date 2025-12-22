@@ -74,3 +74,6 @@ def load_file(file_path : str):
 
 def print_bar():
     print("\n-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-*#*-")
+
+def clean_board():
+    print('\n'*30)
