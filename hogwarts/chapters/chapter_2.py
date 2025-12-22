@@ -47,13 +47,16 @@ def meet_friends(character: dict)->None:
 
 def welcome_message()->None:
     print_bar()
-    print("\nWelcome to Hogwarts, a sanctuary where your minds will be sharpened and your hearts shall find a home.")
+    print("As you enter in a large room, a man, who seems to be the school principal is standing on a promontory.")
+    print("When everyone finally enters in the room. The man says :")
+    wait_pause()
+    print("\n\"Welcome to Hogwarts, a sanctuary where your minds will be sharpened and your hearts shall find a home.")
     wait_pause()
     print("May you fill these ancient halls with friendship, for help will always be given here to those who ask for it.")
     wait_pause()
     print("Remember that happiness can be found, even in the darkest of times, if one only remembers to turn on the light.")
     wait_pause()
-    print("Now, before we become too befuddled by our own brilliance, let the feast begin!")
+    print("Now, before we become too befuddled by our own brilliance, let the feast begin!\"")
 
 def sorting_ceremony(character:dict)->dict:
     print_bar()
@@ -64,19 +67,19 @@ def sorting_ceremony(character:dict)->dict:
     questions = [
         (
             "Which subject at Hogwarts interests you the most?",
-            ["Defense Against the Dark Arts", "Potions", "Herbology", "History of Magic"],
-            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+            ["Herbology", "History of magic", "Defense Against the Dark Arts", "Potions"],
+            ["Hufflepuff", "Ravenclaw", "Gryffindor", "Slytherin"]
         ),
         (
             "You find a locked door in a mysterious corridor. What do you do?",
-            ["Try to break it down", "Pick the lock quietly", "Knock and ask if anyone is there",
-             "Look for a key or solve the riddle"],
-            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+            ["Pick the lock quietly"," Knock and ask if anyone is there", "Look for a key or solve the riddle",
+            "Try to break it down"],
+            ["Slytherin", "Hufflepuff", "Ravenclaw", "Gryffindor"]
         ),
         (
             "How would you like to be remembered in history?",
-            ["As a bold hero", "As a powerful ruler", "As a kind soul", "As a wise genius"],
-            ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
+            ["As a wise genius", "As a bold hero", "As a powerful ruler", "As a kind soul"],
+            ["Ravenclaw", "Gryffindor", "Slytherin", "Hufflepuff"]
         ),
         (
             "If you could have one superpower, what would it be?",
@@ -98,7 +101,7 @@ def enter_common_room(character:dict)->None:
     houses_data = load_file("data/houses.json")
     house= houses_data[character["House"]]
     print_bar()
-    print("\nYou follow the perfects though the castle corridors...")
+    print("\nYou follow the prefects though the castle corridors...")
     wait_pause()
     print(house["emoji"], house["description"])
     wait_pause()
