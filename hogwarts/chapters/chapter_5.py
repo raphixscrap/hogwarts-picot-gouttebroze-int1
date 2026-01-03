@@ -27,7 +27,7 @@ def print_status(character,enemy):
 def attack (caster, target):
     damage = 0
     for _ in range (caster['Attack'][0]):
-        damage += randint(0,caster['Attack'][1])
+        damage += randint(1,caster['Attack'][1])
     target["HP"]-= damage
     if(target["HP"]<0):
         target["HP"]=0
@@ -35,19 +35,19 @@ def attack (caster, target):
 
 def turn(character, enemy):
     print_status(character, enemy)
-    player_protect,character_dodge = False,20
-    enemy_protect,enemy_dodge = False,20
+    player_protect,character_dodge = False,5
+    enemy_protect,enemy_dodge = False,5
     player_action = ask_choice("What do you want to do ?",["ATTACK","PROTEGO","DODGE"])
     enemy_action = randint(2,6)
     if(enemy_action==5):
         enemy_protect=True
     elif(enemy_action ==3):
-        enemy_dodge*=4
+        enemy_dodge*=16
 
     if(player_action == 1):
         if(enemy_protect):
             print("{} uses protego, you're attack is parried".format(enemy["name"]))
-            if(randint(1,100)%5 == 0):
+            if(randint(1,100)%2 == 0):
                 print('{} is counterattacking !'.format(enemy["name"]))
                 if (character_dodge >= randint(1,100)):
                     print("But you dodged it !")
@@ -61,12 +61,12 @@ def turn(character, enemy):
     elif(player_action == 2):
         player_protect = True
     else:
-        character_dodge *= 4
+        character_dodge *= 16
     wait_pause()
     if(enemy_action!=5 and enemy_action!=3):
         if(player_protect):
             print('The enemy tries to attack you when you use protego!')
-            if (randint(1,100)%5 ==0):
+            if (randint(1,100)%2 ==0):
                 print("You counterattack !")
                 if(enemy_dodge >= randint(1,100)):
                     print("But {} dodge it ".format(enemy["name"]))
@@ -146,5 +146,5 @@ def start_chapter_5(character :dict):
 
     wait_pause()
     print_bar()
-    print('Thanks for playing your game... You have finished the last chapter.')
+    print('Thanks for playing our game... You have finished the last chapter.')
 
