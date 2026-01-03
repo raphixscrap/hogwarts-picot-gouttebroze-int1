@@ -1,4 +1,4 @@
-from hogwarts.utils.input_utils import wait_pause, ask_choice
+from hogwarts.utils.input_utils import wait_pause, ask_choice, print_bar
 from random import randint
 
 
@@ -79,13 +79,15 @@ def turn(character, enemy):
                 attack(enemy,character)
     return
 
-def fight(character_duel, enemy_duel):
+def fight(character_duel, enemy_duel)->str:
     while(character_duel['HP']!=0 and enemy_duel["HP"]!=0):
         turn(character_duel,enemy_duel)
     if(character_duel['HP']!=0):
         print("YOU WON THIS DUEL !")
+        return character_duel['name']
     else:
         print("YOU LOST THIS DUEL !")
+        return enemy_duel["name"]
 
 def tutorial_fight(character:dict):
     training_enemy = {"name":"Training bot","HP":20,'MAX_HP':20,'Attack':[2,4]}
@@ -114,9 +116,32 @@ def script (character:dict):
     print("IT'S THE DARK LORD HIMSELF !")
     print("You grab your magic wand and prepare yourself for a fight you are not sure to survive.")
 
+def duel_dark_lord(character)->dict:
+    character_duel = {'name':character["First Name"],'HP':10*character["Attributes"]["Ambition"],'MAX_HP':10*character["Attributes"]["Ambition"],"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
+    dark_lord = {"name":"Voldemort",'HP':30,'MAX_HP':35,'Attack':[3,4]}
+    winner = fight(character_duel,dark_lord)
+
+    if(winner!= character["First Name"]):
+        print("The dark lord laughs as your last forces leave you.")
+        print("\" You were so weak {}!\"".format(character["First Name"]))
+        print("No one will know about what happened... Your friends will try to find you... But will never find your body...")
+        wait_pause()
+        print("The dark lord still alive... and no one know he is back...")
+        print_bar()
+
+    else:
+        print("As the dark lord seems stunned by your attack, you jump to catch the cup.")
+        print("The cup bring you back at Hogwarts, you are seriously injured by your duel...")
+        wait_pause()
+        print("The last words you say before you collapse on the grass are :\" He is back\".\n And you close your eyes. Not for the last time but you feel how close you were from death.")
+        wait_pause()
+
 def start_chapter_5(character :dict):
     print("=========== CHAPTER 5 : Duel against Voldemort during the Goblet of Fire ===========")
     tutorial(character)
     script(character)
     duel_dark_lord(character)
+
+    wait_pause()
+    print_bar()
 
