@@ -62,6 +62,7 @@ def turn(character, enemy):
         player_protect = True
     else:
         character_dodge *= 4
+    wait_pause()
     if(enemy_action!=5 and enemy_action!=3):
         if(player_protect):
             print('The enemy tries to attack you when you use protego!')
@@ -98,11 +99,24 @@ def tutorial (character:dict):
     while( ask_choice("Do you want to make a first duel to understand how it works?",["yes","No"])==1):
         tutorial_fight(character)
 
-
+def script (character:dict):
+    print('After years at Hogwarts, you successfully pass your years.')
+    print('In your 6th year, you are allowed to participate to the Goblet of fire championship.')
+    wait_pause()
+    print("After passing the different competition, you find yourself in the maze.")
+    print("After minutes of running in the maze you finally find the cup!")
+    wait_pause()
+    print('You run to it but when you touch it...')
+    wait_pause()
+    print('You are teleported to a graveyard.')
+    print("A man, with a silk Habotai over-robe...")
+    print("Mysterious man : \"There you are {}".format(character['First Name']))
+    print("IT'S THE DARK LORD HIMSELF !")
+    print("You grab your magic wand and prepare yourself for a fight you are not sure to survive.")
 
 def start_chapter_5(character :dict):
     print("=========== CHAPTER 5 : Duel against Voldemort during the Goblet of Fire ===========")
     tutorial(character)
     script(character)
-    duel_voldemort(character)
+    duel_dark_lord(character)
 
