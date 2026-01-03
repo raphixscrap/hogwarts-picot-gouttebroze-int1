@@ -144,4 +144,5 @@ def start_chapter_5(character :dict):
 
     wait_pause()
     print_bar()
+    print('Thanks for playing your game... You have finished the last chapter.')
 
