@@ -2,6 +2,7 @@ from hogwarts.chapters.chapter_1 import start_chapter_1
 from hogwarts.chapters.chapter_2 import start_chapter_2
 from hogwarts.chapters.chapter_3 import start_chapter_3
 from hogwarts.chapters.chapter_4 import start_chapter_4_quidditch
+from hogwarts.chapters.chapter_5 import start_chapter_5
 from hogwarts.utils.input_utils import ask_number, print_bar, clean_board
 
 
@@ -34,6 +35,7 @@ def launch_menu_choice()->None:
             clean_board()
             start_chapter_4_quidditch(character, houses)
             print_bar()
+            start_chapter_5(character)
             print('This this end of your magic journey !')
             exit()
         else:
