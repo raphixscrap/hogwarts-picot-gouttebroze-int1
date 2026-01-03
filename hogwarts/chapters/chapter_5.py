@@ -16,6 +16,17 @@ def explanation ():
     print('You win a duel if your enemy\'s life reach 0 and yours is superior to 0. And vice versa.')
     wait_pause()
 
+def print_status(character,enemy):
+    print("Your enemy as {}/{} HP.".format(enemy["HP"],enemy["MAX_HP"]))
+    print("["+'='*(10-(enemy["MAX_HP"]-enemy["HP"])//2)+"]")
+    print('\n'*2)
+    print("You have {}/{} HP.".format(character["HP"],character["MAX_HP"]))
+    print("[" + '=' * (10 - (character["MAX_HP"] - character["HP"]) // 2) + "]")
+
+def turn(character, enemy):
+    print_status(character, enemy)
+    return
+
 def fight(character_duel, enemy_duel):
     while(character_duel['HP']!=0 and enemy_duel["HP"]!=0):
         turn(character_duel,enemy_duel)
@@ -25,8 +36,8 @@ def fight(character_duel, enemy_duel):
         print("YOU LOST THIS DUEL !")
 
 def tutorial_fight(character:dict):
-    training_enemy = {"name":"Training bot","HP":20,'Attack':[2,4]}
-    character_duel = {"Name":character["First Name"],"HP":20,"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
+    training_enemy = {"name":"Training bot","HP":20,'MAX_HP':20,'Attack':[2,4]}
+    character_duel = {"Name":character["First Name"],"HP":20,'MAX_HP':20,"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
     fight(character_duel,training_enemy)
 
 def tutorial (character:dict):
