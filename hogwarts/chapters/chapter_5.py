@@ -47,14 +47,14 @@ def turn(character, enemy):
     if(player_action == 1):
         if(enemy_protect):
             print("{} uses protego, you're attack is parried".format(enemy["name"]))
-            if(randint(1,100)%17 == 0):
+            if(randint(1,100)%5 == 0):
                 print('{} is counterattacking !'.format(enemy["name"]))
-                if (character_dodge <= randint(1,100)):
+                if (character_dodge >= randint(1,100)):
                     print("But you dodged it !")
                 else:
                     attack(enemy,character)
         else:
-            if(enemy_dodge <= randint(1,100)):
+            if(enemy_dodge >= randint(1,100)):
                 print("{} dodge it!".format(enemy["name"]))
             else:
                 attack(character,enemy)
@@ -66,14 +66,14 @@ def turn(character, enemy):
     if(enemy_action!=5 and enemy_action!=3):
         if(player_protect):
             print('The enemy tries to attack you when you use protego!')
-            if (randint(1,100)%17 ==0):
+            if (randint(1,100)%5 ==0):
                 print("You counterattack !")
-                if(enemy_dodge <= randint(1,100)):
+                if(enemy_dodge >= randint(1,100)):
                     print("But {} dodge it ".format(enemy["name"]))
                 else:
                     attack(character,enemy)
         else:
-            if(character_dodge <= randint(1,100)):
+            if(character_dodge >= randint(1,100)):
                 print("You dodge the enemy's attack !")
             else:
                 attack(enemy,character)
@@ -91,7 +91,7 @@ def fight(character_duel, enemy_duel)->str:
 
 def tutorial_fight(character:dict):
     training_enemy = {"name":"Training bot","HP":20,'MAX_HP':20,'Attack':[2,4]}
-    character_duel = {"name":character["First Name"],"HP":20,'MAX_HP':20,"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
+    character_duel = {"name":character["First Name"],"HP":20,'MAX_HP':20,"Attack":[character["Attributes"]["Ambition"]%2+1,character["Attributes"]["Intelligence"]+1]}
     fight(character_duel,training_enemy)
 
 def tutorial (character:dict):
@@ -116,8 +116,8 @@ def script (character:dict):
     print("IT'S THE DARK LORD HIMSELF !")
     print("You grab your magic wand and prepare yourself for a fight you are not sure to survive.")
 
-def duel_dark_lord(character)->dict:
-    character_duel = {'name':character["First Name"],'HP':10*character["Attributes"]["Ambition"],'MAX_HP':10*character["Attributes"]["Ambition"],"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
+def duel_dark_lord(character):
+    character_duel = {'name':character["First Name"],'HP':10*character["Attributes"]["Ambition"],'MAX_HP':10*character["Attributes"]["Ambition"],"Attack":[character["Attributes"]["Ambition"]%2+1,character["Attributes"]["Intelligence"]+1]}
     dark_lord = {"name":"Voldemort",'HP':30,'MAX_HP':35,'Attack':[3,4]}
     winner = fight(character_duel,dark_lord)
 

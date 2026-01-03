@@ -5,6 +5,7 @@ from hogwarts.chapters.chapter_1 import start_chapter_1
 from hogwarts.chapters.chapter_2 import start_chapter_2, enter_common_room
 from hogwarts.chapters.chapter_3 import start_chapter_3
 from hogwarts.chapters.chapter_4 import *
+from hogwarts.chapters.chapter_5 import start_chapter_5
 from hogwarts.universe.character import add_item
 from hogwarts.utils.input_utils import load_file
 
@@ -31,7 +32,7 @@ questions = [
         ["Gryffindor", "Slytherin", "Hufflepuff", "Ravenclaw"]
     )
 ]
-harry = character.init_character("Pottebeur", "Harry", {"Courage": 3, "Ambition":2, "Loyalty": 1, "Intelligence": 0})
+harry = character.init_character("Pottebeur", "Harry", {"Courage": 3, "Ambition":2, "Loyalty": 1, "Intelligence": 5})
 add_item(harry, "Inventory","wand")
 harry["Spells"]= ["Levioso","Accio","Lumos"]
 harry["House"] = "Gryffindor"
@@ -50,8 +51,9 @@ if (__name__ == "__main__"):
     #start_chapter_1()
     #start_chapter_2(harry)
     #start_chapter_3(harry,houses)
-    teams_data = load_file("data/teams_quidditch.json")
-    attack = create_team('Slytherin', teams_data["Slytherin"])
-    defense = create_team('Gryffindor', teams_data["Gryffindor"], True, harry)
+    #teams_data = load_file("data/teams_quidditch.json")
+    #attack = create_team('Slytherin', teams_data["Slytherin"])
+    #defense = create_team('Gryffindor', teams_data["Gryffindor"], True, harry)
 
-    quidditch_match(harry, houses)
+    #quidditch_match(harry, houses)
+    start_chapter_5(harry)
