@@ -43,6 +43,7 @@ houses = {
         "Ravenclaw": 0
     }
 
+
 if (__name__ == "__main__"):
     #character.display_character(harry)
     #print(house.assign_house(harry, questions))
