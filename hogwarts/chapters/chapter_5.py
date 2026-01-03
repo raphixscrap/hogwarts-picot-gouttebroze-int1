@@ -19,10 +19,10 @@ def explanation ():
 
 def print_status(character,enemy):
     print("Your enemy as {}/{} HP.".format(enemy["HP"],enemy["MAX_HP"]))
-    print("["+'='*(10-(enemy["MAX_HP"]-enemy["HP"])//2)+"]")
+    print("["+'='*((enemy["HP"]*10)//enemy["MAX_HP"])+"]")
     print('\n'*2)
     print("You have {}/{} HP.".format(character["HP"],character["MAX_HP"]))
-    print("[" + '=' * (10 - (character["MAX_HP"] - character["HP"]) // 2) + "]")
+    print("[" + '=' * ((character["HP"]*10)//character["MAX_HP"]) + "]")
 
 def attack (caster, target):
     damage = 0
@@ -52,14 +52,17 @@ def turn(character, enemy):
                 if (character_dodge >= randint(1,100)):
                     print("But you dodged it !")
                 else:
+                    print('{} is attacking ! '.format(enemy["name"]))
                     attack(enemy,character)
         else:
             if(enemy_dodge >= randint(1,100)):
                 print("{} dodge it!".format(enemy["name"]))
             else:
+                print('Your attack reaches the enemy !')
                 attack(character,enemy)
     elif(player_action == 2):
         player_protect = True
+        print('You defend yourself.')
     else:
         character_dodge *= 16
     wait_pause()
@@ -71,11 +74,13 @@ def turn(character, enemy):
                 if(enemy_dodge >= randint(1,100)):
                     print("But {} dodge it ".format(enemy["name"]))
                 else:
+                    print("Your counterattack reaches its target!")
                     attack(character,enemy)
         else:
             if(character_dodge >= randint(1,100)):
                 print("You dodge the enemy's attack !")
             else:
+                print("{} attacks you!".format(enemy["name"]))
                 attack(enemy,character)
     return
 
@@ -115,6 +120,7 @@ def script (character:dict):
     print("Mysterious man : \"There you are {}".format(character['First Name']))
     print("IT'S THE DARK LORD HIMSELF !")
     print("You grab your magic wand and prepare yourself for a fight you are not sure to survive.")
+    wait_pause()
 
 def duel_dark_lord(character):
     character_duel = {'name':character["First Name"],'HP':10*character["Attributes"]["Ambition"],'MAX_HP':10*character["Attributes"]["Ambition"],"Attack":[character["Attributes"]["Ambition"]%2+1,character["Attributes"]["Intelligence"]+1]}
@@ -127,14 +133,15 @@ def duel_dark_lord(character):
         print("No one will know about what happened... Your friends will try to find you... But will never find your body...")
         wait_pause()
         print("The dark lord still alive... and no one know he is back...")
-        print_bar()
+        wait_pause()
 
     else:
         print("As the dark lord seems stunned by your attack, you jump to catch the cup.")
         print("The cup bring you back at Hogwarts, you are seriously injured by your duel...")
         wait_pause()
-        print("The last words you say before you collapse on the grass are :\" He is back\".\n And you close your eyes. Not for the last time but you feel how close you were from death.")
+        print("The last words you say before you collapse on the grass are :\" He is back\".\nAnd you close your eyes. Not for the last time but you feel how close you were from death.")
         wait_pause()
+    print_bar()
 
 def start_chapter_5(character :dict):
     print("=========== CHAPTER 5 : Duel against Voldemort during the Goblet of Fire ===========")
