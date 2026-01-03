@@ -1,4 +1,5 @@
 from hogwarts.utils.input_utils import wait_pause, ask_choice
+from random import randint
 
 
 def explanation ():
@@ -25,6 +26,47 @@ def print_status(character,enemy):
 
 def turn(character, enemy):
     print_status(character, enemy)
+    player_protect,character_dodge = False,20
+    enemy_protect,enemy_dodge = False,20
+    player_action = ask_choice("What do you want to do ?",["ATTACK","PROTEGO","DODGE"])
+    enemy_action = randint(2,6)
+    if(enemy_action==5):
+        enemy_protect=True
+    elif(enemy_action ==3):
+        enemy_dodge*=4
+
+    if(player_action == 1):
+        if(enemy_protect):
+            print("{} uses protego, you're attack is parried".format(enemy["name"]))
+            if(randint(1,100)%17 == 0):
+                print('{} is counterattacking !'.format(enemy["name"]))
+                if (character_dodge <= randint(1,100)):
+                    print("But you dodged it !")
+                else:
+                    attack(enemy,character)
+        else:
+            if(enemy_dodge <= randint(1,100)):
+                print("{} dodge it!".format(enemy["name"]))
+            else:
+                attack(character,enemy)
+    elif(player_action == 2):
+        player_protect = True
+    else:
+        character_dodge *= 4
+    if(enemy_action!=5 and enemy_action!=3):
+        if(player_protect):
+            print('The enemy tries to attack you when you use protego!')
+            if (randint(1,100)%17 ==0):
+                print("You counterattack !")
+                if(enemy_dodge <= randint(1,100)):
+                    print("But {} dodge it ".format(enemy["name"]))
+                else:
+                    attack(character,enemy)
+        else:
+            if(character_dodge <= randint(1,100)):
+                print("You dodge the enemy's attack !")
+            else:
+                attack(enemy,character)
     return
 
 def fight(character_duel, enemy_duel):
@@ -37,7 +79,7 @@ def fight(character_duel, enemy_duel):
 
 def tutorial_fight(character:dict):
     training_enemy = {"name":"Training bot","HP":20,'MAX_HP':20,'Attack':[2,4]}
-    character_duel = {"Name":character["First Name"],"HP":20,'MAX_HP':20,"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
+    character_duel = {"name":character["First Name"],"HP":20,'MAX_HP':20,"Attack":[character["Attributes"]["Ambition"]%2,character["Attributes"]["Intelligence"]]}
     fight(character_duel,training_enemy)
 
 def tutorial (character:dict):
