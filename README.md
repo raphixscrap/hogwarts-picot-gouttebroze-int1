@@ -69,7 +69,7 @@ We adopted a pair-programming approach for the core utilities, then divided the 
 
 * **Lazare GOUTTEBROZE:**
     * Lead development on `universe/` modules (`character.py` and `house.py`).
-    * Implementation of `chapter_2.py` (Sorting Hat logic) and `chapter_3.py` (Quiz and Spells).
+    * Implementation of `chapter_2.py` (Sorting Hat logic), `chapter_3.py` (Quiz and Spells) and `chapter_5.py`.
     * Management of JSON data files (`houses.json`, `spells.json`, `magic_quiz.json`).
 
 * **Collaborative Work:**
@@ -85,14 +85,14 @@ We adopted a pair-programming approach for the core utilities, then divided the 
 To ensure the game does not crash due to invalid user input, we centralized all interactions in `hogwarts/utils/input_utils.py`.
 
 1.  **Type Validation (`ask_number`):**
-    * We use a `try...except ValueError` block. If the user enters a string (e.g., "Harry") instead of a number, the function catches the error and recursively calls itself until a valid integer is entered.
+    * We use two different function : one to remove the sign, the other one that goes through the string to ensure it can be turned into an integer.
 2.  **Range Validation:**
-    * The functions `ask_number` and `ask_choice` accept `min_val` and `max_val` arguments. If the user enters a number outside this range (e.g., choosing option 5 in a menu of 3 items), it raises a `ValueError` and prompts again.
+    * The functions `ask_number` and `ask_choice` accept `min_val` and `max_val` arguments. If the user enters a number outside this range (e.g., choosing option 5 in a menu of 3 items), it asks the user to enter a value until the value is acceptable.
 3.  **Empty Strings (`ask_text`):**
     * We use the `.strip()` method to remove whitespace. A `while` loop prevents the user from entering an empty name or just spaces.
 
 **Known Bugs:**
-* *None.* The game runs through all 4 chapters without crashing on standard execution. JSON files must be present in the `hogwarts/data/` folder for the game to launch.
+* *None.* The game runs through all 5 chapters without crashing on standard execution. JSON files must be present in the `hogwarts/data/` folder for the game to launch.
 
 ### Testing Strategies
 
@@ -121,3 +121,7 @@ We performed complete runs of the chapters to verify game logic:
 * **Quidditch Match Test (Chapter 4):**
     * *Action:* We ran the match multiple times to verify the random "Golden Snitch" appearance.
     * *Result:* In some games, the match ended at Turn 20. In others, the Snitch was caught early (e.g., Turn 12), immediately ending the loop and awarding 150 points, confirming the `break` statement in the loop works.
+
+* **Duel against the Dark Lord (Chapter 5):**
+    * *Action*: We ran the duels multiple time to ensure that the game is balanced and playable.
+    *  *Result* : Some duels can be lost and win depending the play style of the user. This chapter works and every statements are used and functional.
