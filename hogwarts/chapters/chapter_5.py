@@ -24,6 +24,15 @@ def print_status(character,enemy):
     print("You have {}/{} HP.".format(character["HP"],character["MAX_HP"]))
     print("[" + '=' * (10 - (character["MAX_HP"] - character["HP"]) // 2) + "]")
 
+def attack (caster, target):
+    damage = 0
+    for _ in range (caster['Attack'][0]):
+        damage += randint(0,caster['Attack'][1])
+    target["HP"]-= damage
+    if(target["HP"]<0):
+        target["HP"]=0
+    return
+
 def turn(character, enemy):
     print_status(character, enemy)
     player_protect,character_dodge = False,20
@@ -94,6 +103,6 @@ def tutorial (character:dict):
 def start_chapter_5(character :dict):
     print("=========== CHAPTER 5 : Duel against Voldemort during the Goblet of Fire ===========")
     tutorial(character)
-    sceanario(character)
+    script(character)
     duel_voldemort(character)
 
