@@ -1,4 +1,4 @@
-from hogwarts.utils.input_utils import wait_pause, ask_choice, print_bar
+from hogwarts.utils.input_utils import wait_pause, ask_choice, print_bar, clean_board
 from random import randint
 
 
@@ -139,7 +139,9 @@ def duel_dark_lord(character)->dict:
 def start_chapter_5(character :dict):
     print("=========== CHAPTER 5 : Duel against Voldemort during the Goblet of Fire ===========")
     tutorial(character)
+    clean_board()
     script(character)
+    clean_board()
     duel_dark_lord(character)
 
     wait_pause()
